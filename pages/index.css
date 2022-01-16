@@ -48,6 +48,7 @@
         text-align: center;
         height: 42px;
         line-height: 42px;
+        position: relative;
     }
     
     .calendar-days-today {
@@ -62,6 +63,18 @@
     
     .calendar-days>li.calendar-days-disabled {
         color: #999;
+    }
+    
+    .calendar-days>li.calendar-days-hasEvents::after {
+        content: '';
+        border: 1px solid green;
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        width: 8px;
+        height: 8px;
+        background: green;
+        border-radius: 4px;
     }
     
     .calendar-actions {
@@ -86,3 +99,12 @@
     
     .calendar-actions-right>button {}
     /* end */
+    /* events*/
+    
+    .events-wapper {
+        padding: 16px;
+    }
+    
+    .events-item {
+        padding: 4px 0;
+    }

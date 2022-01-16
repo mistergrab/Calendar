@@ -67,10 +67,29 @@ function render(time) {
                 if (selectedLi) { selectedLi.classList.remove('calendar-days-selected') }
                 li.classList.add("calendar-days-selected")
                 selectedLi = li
+                if (events) {
+                    const fragment = document.createDocumentFragment()
+                    events.map(event => {
+                        const div = document.createElement('div')
+                        div.classList.add('events-item')
+                        div.textContent = event
+                        fragment.append(div)
+                    })
+                    g('#events').innerHTML = ""
+                    g('#events').append(fragment)
+                } else {
+                    g('#events').innerHTML = "<div>无</div>"
+
+                }
+            }
+            const key = `${year}-${month}-${i}`
+            const events = window.data[key]
+            if (events) {
+                li.classList.add('calendar-days-hasEvents')
             }
             days.append(li)
-            n += 1
 
+            n += 1
         }
         let i = 月末星期几 + 1
         for (let j = 0; j < 42 - n; j++) {
